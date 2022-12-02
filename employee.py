@@ -66,10 +66,10 @@ def addNew(name, phone, email, department, salary, employment_date):
     new_employee = dict(name=name, phone=phone, email=email, department=department,
                         salary=salary, employment_date=employment_date)
     employee.append(new_employee)
-    print(employee[len(employee) - 1])  # This is to check the newly added employee
+    print(employee[-1])  # This is to check the newly added employee
 
 
-addNew('praise', 9193493993, 'emmanuelpraise36@gmai l.com', 'engineering', 200_000, date(2020, 12, 12))
+# addNew('praise', 9193493993, 'emmanuelpraise36@gmai l.com', 'engineering', 200_000, date(2020, 12, 12))
 addNew('samuel', 9062349184, 'stainlessseyy2007@gmail.com', 'marketing', 250_000, date(2019, 1, 1))
 
 
@@ -79,14 +79,19 @@ def dateRange(date_from, date_to):
     # Getting the list of dates in the employee list.
     date_list = [i['employment_date'] for i in employee if 'employment_date' in i]
     date_list.sort()
+
+    # Getting the date between date_from and date_to.
     date_between = [x for x in date_list if date_from <= x <= date_to]
-    print(date_between)
 
     # Getting the Employee details where employment date between date range
-    # for x in range(len(date_between)):
-    #     for i in employee:
-    #         if date_between[x] in i['employment_date']:
-    #             print(i)
+    for x in range(len(date_between)):
+        if type(x) is list:
+            pass
+            # for i in employee:
+            #     if date_between[x] in i['employment_date']:
+            #         print(i)
+        else:
+            print(date_between[x])
 
 
 dateRange(date(2018, 3, 14), date(2020, 8, 4))
@@ -133,11 +138,15 @@ def highest_lowest_pay():
     highest_lowest = [high, low]
 
     # Getting the Employee details with the highest and lowest salaries
-    # for x in range(len(salary_list)):
-    #     for i in employee:
-    #         if highest_lowest[x] in i['salary']:
-    #             print(i)
-    print(highest_lowest)
+    for x in range(len(highest_lowest)):
+        if type(x) is list:
+            pass
+            # for i in employee:
+            #     if highest_lowest[x] in i['salary']:
+            #         print(i)
+        else:
+            print(highest_lowest[x])
+    # print(highest_lowest)
 
 
 highest_lowest_pay()
