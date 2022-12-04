@@ -61,19 +61,22 @@ employee = [
 ]
 
 
-# 1. write a function that accept employee and add to the list of employee.
+# 1. Write a function that accept employee and add to the list of employee.
 def addNew(name, phone, email, department, salary, employment_date):
     new_employee = dict(name=name, phone=phone, email=email, department=department,
                         salary=salary, employment_date=employment_date)
     employee.append(new_employee)
-    print(employee[-1])  # This is to check the newly added employee
+    print('1.', employee[-1])  # This is to check the newly added employee
 
 
 # addNew('praise', 9193493993, 'emmanuelpraise36@gmai l.com', 'engineering', 200_000, date(2020, 12, 12))
-addNew('samuel', 9062349184, 'stainlessseyy2007@gmail.com', 'marketing', 250_000, date(2019, 1, 1))
+addNew('emmanuel', 9194543493, 'emmanuel126@gmail.com', 'accounting', 210_000, date(2020, 8, 1))
+# addNew('samuel', 9062349184, 'stainlessseyy2007@gmail.com', 'marketing', 250_000, date(2019, 1, 1))
+addNew('julian', 8055347784, 'julianuary@com', 'marketing', 205_000, date(2018, 11, 6))
+print('\n')
 
 
-# 2. write a function that accept 2 parameters 'date from' and 'date to'.
+# 2. Write a function that accept 2 parameters 'date from' and 'date to'.
 # And returns the employee that was employed within the date range in an array form.
 def dateRange(date_from, date_to):
     # Getting the list of dates in the employee list.
@@ -85,40 +88,28 @@ def dateRange(date_from, date_to):
 
     # Getting the Employee details where employment date between date range
     for x in range(len(date_between)):
-        if type(x) is list:
-            pass
-            # for i in employee:
-            #     if date_between[x] in i['employment_date']:
-            #         print(i)
-        else:
-            print(date_between[x])
+        for i in employee:
+            if i['employment_date'] == date_between[x]:
+                print('2.', i)
 
 
-dateRange(date(2018, 3, 14), date(2020, 8, 4))
+dateRange(date(2019, 1, 1), date(2020, 8, 4))
+print('\n')
 
 
 # 3. write function that returns the array of employee with invalid email address.
 def get_email():
-    # Getting the list of emails in the employee list.
-    email_list = [i['email'] for i in employee if 'email' in i]
-    email_list.sort()
-
-    # Getting the list of invalid emails from the email list.
-    invalid_email = [x for x in email_list
-                     if not x.__contains__('@gmail.com') and not x.__contains__('@yahoo.com')
-                     and not x.__contains__('@outlook.com')]
-
-    # Getting the Employee details where emails are invalid
-    for x in range(len(invalid_email)):
-        for i in employee:
-            if invalid_email[x] in i['email']:
-                print(i)
+    # Getting the invalid emails with the employee details.
+    for i in employee:
+        if '@gmail.com' not in i['email'] and '@yahoo.com' not in i['email'] and '@outlook.com' not in i['email']:
+            print('3.', i)
 
 
 get_email()
+print('\n')
 
 
-# 4.write a function that return employee with highest and lowest pay.
+# 4. Write a function that return employee with highest and lowest pay.
 def highest_lowest_pay():
     # Getting the list of salary in the employee list.
     salary_list = [i['salary'] for i in employee if 'salary' in i]
@@ -135,18 +126,10 @@ def highest_lowest_pay():
         if x < low:
             low = x
 
-    highest_lowest = [high, low]
-
     # Getting the Employee details with the highest and lowest salaries
-    for x in range(len(highest_lowest)):
-        if type(x) is list:
-            pass
-            # for i in employee:
-            #     if highest_lowest[x] in i['salary']:
-            #         print(i)
-        else:
-            print(highest_lowest[x])
-    # print(highest_lowest)
+    for i in employee:
+        if i['salary'] == high or i['salary'] == low:
+            print('4.', i)
 
 
 highest_lowest_pay()
